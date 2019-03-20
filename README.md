@@ -30,8 +30,9 @@
 
 #####'demo' Observations:
 
-- 'Start' button before game starts, quiz and time component hidden until user clicks Start
-- Timer starts countdown once user clicks Start
+- 'Start' button before game starts, quiz and time component hidden until user clicks Start [x]
+- Timer starts countdown once user clicks Start [x]
+  - Timer stops at 0 [x]
 - Restarts when a new question is displayed
 - When user answer is chosen, quiz and timer component is hidden and answer component is displayed.
 
