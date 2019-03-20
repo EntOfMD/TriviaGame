@@ -1,102 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-        />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <meta
-            name="identifier-url"
-            content="https://entofmd.github.io/TriviaGame/"
-        />
-        <meta name="title" content="TriviaGame" />
-        <meta
-            name="description"
-            content="Answer Trivia Question Before Timer Runs Out"
-        />
-        <meta
-            name="abstract"
-            content="Answer Trivia Question Before Timer Runs Out"
-        />
-        <meta
-            name="keywords"
-            content="Trivia, Github, GW, Bootcamp, Homework, Game"
-        />
-        <meta name="author" content="Ashell Fernando" />
-        <meta http-equiv="pragma" content="no-cache" />
-        <meta name="revisit-after" content="15" />
-        <meta name="language" content="EN" />
-        <meta name="copyright" content="© 2019 Ashell Fernando " />
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="identifier-url"
+      content="https://entofmd.github.io/TriviaGame/"
+    />
+    <meta name="title" content="TriviaGame" />
+    <meta
+      name="description"
+      content="Answer Trivia Question Before Timer Runs Out"
+    />
+    <meta
+      name="abstract"
+      content="Answer Trivia Question Before Timer Runs Out"
+    />
+    <meta
+      name="keywords"
+      content="Trivia, Github, GW, Bootcamp, Homework, Game"
+    />
+    <meta name="author" content="Ashell Fernando" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="revisit-after" content="15" />
+    <meta name="language" content="EN" />
+    <meta name="copyright" content="© 2019 Ashell Fernando " />
 
-        <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossorigin="anonymous"
-        />
-        <script
-            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"
-        ></script>
-        <script src="./assets/javascript/ascii.js"></script>
-        <script src="./assets/javascript/app.js"></script>
-        <link rel="stylesheet" href="./assets/css/style.css" />
-        <title>Trivia Game :: Ashell Fernando</title>
-    </head>
-    <body>
-        <video id="pikapika" playsinline autoplay muted loop>
-            <source src="./assets/images/background.mp4" type="video/mp4" />
-        </video>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-sm-auto col-md-auto col-lg-auto col-xl-auto">
-                    <div class="jumbotron pt-1">
-                        <div class="container">
-                            <span id="title"></span>
-                            <span id="main-title" class="display-3 mx-auto"
-                                >TRIVIA GAME!</span
-                            >
-                        </div>
-                        <div class="row mt-3">
-                            <div
-                                class="col-sm-auto col-md-auto col-lg-auto col-xl-auto"
-                            >
-                                <p class="lead">
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Corrupti eos nihil
-                                </p>
-                            </div>
-                        </div>
-
-                        <hr class="my-4" />
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Soluta corrupti consequatur quia esse porro
-                            ullam officia mollitia et suscipit eos, dolore odio
-                            libero nam exercitationem aliquam laborum eligendi
-                            cum earum.
-                        </p>
-                        <a class="btn btn-primary btn-lg" href="#" role="button"
-                            >Learn more</a
-                        >
-                    </div>
-                </div>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/javascript/ascii.js"></script>
+    <script src="./assets/javascript/app.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Trivia Game :: Ashell Fernando</title>
+  </head>
+  <body>
+    <video id="pikapika" playsinline autoplay muted loop>
+      <source src="./assets/images/background.mp4" type="video/mp4" />
+    </video>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-auto col-md-auto col-lg-auto col-xl-auto">
+          <div class="jumbotron pt-1">
+            <div class="container">
+              <div class="text-center">
+                <span id="title"></span>
+                <span id="main-title" class="display-3 mx-auto"
+                  >TRIVIA GAME!</span
+                >
+              </div>
             </div>
+            <hr class="my-4" />
+            <div class="row mt-3">
+              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <p class="lead " id="timer_ui">
+                  TIMER GOES HERE
+                </p>
+                <hr class="my-4" />
+              </div>
+            </div>
+
+            <div class="list-group">
+              <button
+                type="button"
+                class="list-group-item list-group-item-action active text-center disabled"
+                id="question_ui"
+              >
+                Question will go here
+              </button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                id="question-1"
+              >
+                Answer one goes here
+              </button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                id="question-2"
+              >
+                Answer two goes here
+              </button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                id="question-3"
+              >
+                Answer three goes here
+              </button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                id="question-4"
+              >
+                Answer four goes here
+              </button>
+            </div>
+          </div>
         </div>
-    </body>
+      </div>
+    </div>
+  </body>
 </html>
 
 <!-- 
