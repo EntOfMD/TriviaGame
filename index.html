@@ -67,17 +67,24 @@
                 >
               </div>
             </div>
-            <hr class="my-4" />
+            <hr />
             <div class="row mt-3">
               <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <p class="lead " id="timer_ui">
-                  TIMER GOES HERE
-                </p>
-                <hr class="my-4" />
+                <div
+                  class="alert alert-dismissible alert-info text-center my-0 py-1"
+                  id="time-alert"
+                >
+                  <strong>Time Remaining: </strong>
+                </div>
+                <hr />
               </div>
             </div>
-
-            <div class="list-group">
+            <div id="start-btn" class="text-center">
+              <button type="button" class="btn btn-primary btn-lg pl-5 pr-5">
+                START
+              </button>
+            </div>
+            <div class="list-group" id="quiz_ui">
               <button
                 type="button"
                 class="list-group-item list-group-item-action active text-center disabled"
@@ -113,6 +120,15 @@
               >
                 Answer four goes here
               </button>
+            </div>
+            <div class="card text-white bg-dark my-3 mx-auto">
+              <div class="card-body">
+                <h4 class="card-title" id="quiz_results"></h4>
+                <p class="card-text" id="quiz_body">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
             </div>
           </div>
         </div>
