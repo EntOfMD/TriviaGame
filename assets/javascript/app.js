@@ -27,7 +27,24 @@ const timer_ui = {
     $('#time-alert').html(`<h3>Time remaining: ${timer_ui.countdown}</h3>`);
     if (timer_ui.countdown === 0) {
       timer_ui.stop();
+      $('#time-alert').toggleClass('alert-info alert-danger');
     }
+  }
+};
+
+const api = {
+  questions: [],
+  fetch: () => {
+    let url = `https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple`;
+    $.ajax({
+      type: 'GET',
+      url: url
+    }).then(res => {
+      api.createQuiz(res.results);
+    });
+  },
+  createQuiz: info => {
+    //NEED TO SOMEHOW LINK THIS TO THE PAGE
   }
 };
 
