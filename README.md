@@ -1,32 +1,43 @@
 ## Trivia Game
-There are two versions for this homework. 
 
-These are the requirements for each version.
+### Timed Questions:
 
-### Timed Form:
+- You'll create a trivia game that shows only one question until the player answers it or their time runs out.
 
-* You'll create a trivia form with multiple choice or true/false options (your choice).
+* If the player selects the correct answer, show a screen congratulating them for choosing the right option. After a few seconds, display the next question -- do this without user input.
 
-* The player will have a limited amount of time to finish the quiz. 
-
-
-* The game ends when the time runs out. 
-    
-  * The page will reveal the number of questions that players answer correctly and incorrectly.
-
-
-* Don't let the player pick more than one answer per question.
-
-* Don't forget to include a countdown timer.
-
-### Timed Questions: 
-* You'll create a trivia game that shows only one question until the player answers it or their time runs out.
-- If the player selects the correct answer, show a screen congratulating them for choosing the right option. After a few seconds, display the next question -- do this without user input.
-
-- The scenario is similar for wrong answers and time-outs.
+* The scenario is similar for wrong answers and time-outs.
 
   - If the player runs out of time, tell the player that time's up and display the correct answer. Wait a few seconds, then show the next question.
 
   - If the player chooses the wrong answer, tell the player they selected the wrong option and then display the correct answer. Wait a few seconds, then show the next question.
 
-- On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
+* On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
+
+###Pseudo-code:
+#####Components in the game:
+
+- Title
+- Time
+- Quiz
+- Answer
+
+#####Variables to keep track of:
+
+- corrects
+- incorrects
+- timeouts
+
+#####'demo' Observations:
+
+- 'Start' button before game starts, quiz and time component hidden until user clicks Start
+- Timer starts countdown once user clicks Start
+- Restarts when a new question is displayed
+- When user answer is chosen, quiz and timer component is hidden and answer component is displayed.
+
+- Depending on the answer:
+- displays whether the choice was correct or not
+  - if correct - display 'correct' or something similar
+  - if incorrect - display 'incorrect' or something similar
+- if unanswered and time hits 0
+  - displays time out
