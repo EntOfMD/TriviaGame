@@ -181,6 +181,12 @@ const vals = {
 
 //main
 $(function() {
+    $(this).bind('contextmenu', function(e) {
+        e.preventDefault();
+    });
+    $(this).keydown(function(e) {
+        e.preventDefault();
+    });
     $('#start-btn').click(() => {
         timer_ui.start();
         $('#start-btn').hide();
