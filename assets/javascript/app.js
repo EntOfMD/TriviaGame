@@ -210,7 +210,7 @@ $(function() {
 });
 
 /* 
-TODO:
+TODO 03/21:
 * cap quizzes at 10
     * display gameover component
         * display correct/incorrect score
