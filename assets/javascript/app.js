@@ -29,6 +29,7 @@ const timer_ui = {
     $('#time-alert').html(`<h3>Time remaining: ${timer_ui.countdown}</h3>`);
     $('#incorrect-id').hide();
     $('#correct-id').hide();
+    $('#gameover-id').hide();
     api.fetch();
     $('#quiz_ui').show();
     timer_ui.start();
@@ -52,12 +53,33 @@ const timer_ui = {
     $('#time-alert').html(`<h3>Time remaining: ${timer_ui.countdown}</h3>`);
     //when the timer runs out, do this
     if (timer_ui.countdown === 0) {
-      timer_ui.stop();
       $('#time-alert').toggleClass('alert-info alert-danger');
+
+      $('#quiz_ui').hide();
+      timer_ui.timeOut();
     }
+  },
+  timeOut: () => {
+    vals.timeout++;
+    timer_ui.stop();
+    $('#timeout-id').show();
+    $('#timeout-card').html(
+      ` <img
+              src="https://media0.giphy.com/media/JzOyy8vKMCwvK/giphy.gif"
+              alt="charcharwaterfire" style="width:400px;"
+          /><br>Correct Answer is :<br><h1>${api.cAnswer}</h1>
+          <br>Correct: ${vals.correct} Incorrect: ${vals.incorrect} Timeout: ${
+        vals.timeout
+      }`
+    );
+    setTimeout(() => {
+      $('#timeout-id').hide();
+      // $('#quiz_ui').show();
+      timer_ui.reset();
+    }, 1000 * 3);
   }
 };
-
+// https://media0.giphy.com/media/JzOyy8vKMCwvK/giphy.gif
 //this deals with API
 const api = {
   qList: [],
@@ -76,6 +98,10 @@ const api = {
               res.response_code
             }`
           );
+          vals.questions++;
+          if (vals.questions >= 10) {
+            vals.gameOver();
+          }
         } else if (res.response_code === 2) {
           console.log(
             `Unable to fetch! Check the URL. Response Code: ${
@@ -150,7 +176,7 @@ const vals = {
   correct: 0,
   incorrect: 0,
   wins: 0,
-  losses: 0,
+  questions: 0,
   timeout: 0,
   corCheck: e => {
     if (e == api.cAnswer) {
@@ -164,7 +190,9 @@ const vals = {
               alt="pichuparty"
               style="width:400px;"
           /><br>
-          <br>Correct: ${vals.correct} Incorrect: ${vals.incorrect}`
+          <br>Correct: ${vals.correct} Incorrect: ${vals.incorrect} Timeout: ${
+          vals.timeout
+        }`
       );
       $('#correct-id').show();
       setTimeout(timer_ui.reset, 5000);
@@ -178,11 +206,25 @@ const vals = {
                 src="https://media.giphy.com/media/V4sY8JCTxGyaI/giphy.gif"
                 alt="charcharwaterfire" style="width:400px;"
             /><br>Correct Answer is :<br><h1>${api.cAnswer}</h1>
-            <br>Correct: ${vals.correct} Incorrect: ${vals.incorrect}`
+            <br>Correct: ${vals.correct} Incorrect: ${
+          vals.incorrect
+        } Timeout: ${vals.timeout}`
       );
       $('#incorrect-id').show();
       setTimeout(timer_ui.reset, 5000);
     }
+  },
+  gameOver: () => {
+    $('#quiz_ui').hide();
+    $('#gameover-card').html(`
+<h2>Game Over!</h2><hr>\n
+Correct Answers: ${vals.correct}\n
+Incorrect Answers: ${vals.incorrect}\n
+Timeouts: ${vals.timeout}
+`);
+
+    $('#gameover-id').show();
+    setTimeout(timer_ui.reset, 5000);
   }
 };
 
