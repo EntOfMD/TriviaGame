@@ -164,17 +164,29 @@ const vals = {
             vals.correct++;
             console.log(vals.correct);
             $('#quiz_ui').hide();
+            $('#correct-card').html(
+                `  <img
+              src="https://media.giphy.com/media/7Cy9ZbBkQyrpm/giphy.gif"
+              alt="pichuparty"
+          /><br>
+          <br>Correct: ${vals.correct} Incorrect: ${vals.incorrect}`
+            );
             $('#correct-id').show();
-            setTimeout(timer_ui.reset(), 5000);
-
-            timer_ui.reset();
+            setTimeout(timer_ui.reset, 5000);
         } else if (e !== api.cAnswer) {
             timer_ui.stop();
             vals.incorrect++;
             console.log(vals.incorrect);
             $('#quiz_ui').hide();
+            $('#incorrect-card').html(
+                ` <img
+                src="https://media.giphy.com/media/V4sY8JCTxGyaI/giphy.gif"
+                alt="charcharwaterfire"
+            /><br>Correct Answer is :<br><h1>${api.cAnswer}</h1>
+            <br>Correct: ${vals.correct} Incorrect: ${vals.incorrect}`
+            );
             $('#incorrect-id').show();
-            setTimeout(timer_ui.reset(), 5000);
+            setTimeout(timer_ui.reset, 5000);
         }
     }
 };

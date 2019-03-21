@@ -30,3 +30,7 @@ hr,
 #incorrect-id {
     display: none;
 }
+
+footer {
+    z-index: -1000;
+}
