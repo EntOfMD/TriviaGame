@@ -26,8 +26,12 @@ const timer_ui = {
         clearInterval(timer_ui.intId);
         timer_ui.clockRunning = false;
         timer_ui.countdown = 30;
-        $('#time-alert').toggleClass('alert-info alert-danger');
         $('#time-alert').html(`<h3>Time remaining: ${timer_ui.countdown}</h3>`);
+        $('#incorrect-id').hide();
+        $('#correct-id').hide();
+        api.fetch();
+        $('#quiz_ui').show();
+        timer_ui.start();
     },
     //this will initiate the counter (think of it like the starter motor on the car..)
     start: () => {
@@ -49,14 +53,18 @@ const timer_ui = {
         if (timer_ui.countdown === 0) {
             timer_ui.stop();
             $('#time-alert').toggleClass('alert-info alert-danger');
+
+            $('body').hide();
         }
     }
 };
 
 //this deals with API
 const api = {
+    qList: [],
+    cAnswer: '',
     fetch: () => {
-        let url = `https://opentdb.com/api.php?amount=10&category=9&type=multiple`;
+        let url = `https://opentdb.com/api.php?amount=1&category=9&type=multiple`;
         $.ajax({
             type: 'GET',
             url: url
@@ -65,7 +73,7 @@ const api = {
                 if (res.response_code === 0) {
                     api.createQuiz(res.results);
                     console.log(
-                        `Succesfully fetched! Passed to createQuiz(). Response Code: ${
+                        `Succesfully fetched from API! Passed to createQuiz(). Response Code: ${
                             res.response_code
                         }`
                     );
@@ -80,7 +88,7 @@ const api = {
             .catch(err => {
                 throw err;
             });
-        return `Requested, Waiting...`;
+        return `Initial request sent to API, Waiting for response...`;
     },
     createQuiz: data => {
         //Uses constructor fx and creates a new object for each question
@@ -93,13 +101,81 @@ const api = {
                 data[i].question,
                 data[i].type
             );
-
-            // console.log(quest);
+            // api.displayDOM(quest);
+            // api.qList = JSON.stringify(quest);
+            api.qList = Object.entries(quest);
         }
+        api.displayDOM();
         return quest;
     },
     displayDOM: () => {
-        clg;
+        // var random = pullMyHairOutOMG => {
+        //     let sqrtle =
+        //         pullMyHairOutOMG[
+        //             Math.floor(Math.random() * pullMyHairOutOMG.length)
+        //         ];
+        //     return sqrtle;
+        // };
+
+        const corAnswer = api.qList[1][1],
+            wrongAnswer1 = api.qList[3][1][0],
+            wrongAnswer2 = api.qList[3][1][1],
+            wrongAnswer3 = api.qList[3][1][2];
+
+        const answerList = [
+            wrongAnswer1,
+            wrongAnswer2,
+            wrongAnswer3,
+            corAnswer
+        ];
+        api.cAnswer = corAnswer;
+        console.log(api.cAnswer);
+        Array.prototype.shuffle = function() {
+            let list = answerList;
+
+            for (i = list.length - 1; i >= 0; i--) {
+                let rIndex = Math.floor(Math.random() * (i + 1));
+                let iIndex = list[rIndex];
+
+                list[rIndex] = list[i];
+                list[i] = iIndex;
+            }
+            return list;
+        };
+        var randomArray = answerList.shuffle();
+
+        $('#question_ui').html(api.qList[4][1]);
+        $('#question-1').html(randomArray[0]);
+        $('#question-2').html(randomArray[1]);
+        $('#question-3').html(randomArray[2]);
+        $('#question-4').html(randomArray[3]);
+    }
+};
+
+const vals = {
+    correct: 0,
+    incorrect: 0,
+    wins: 0,
+    losses: 0,
+    timeout: 0,
+    corCheck: e => {
+        if (e == api.cAnswer) {
+            timer_ui.stop();
+            vals.correct++;
+            console.log(vals.correct);
+            $('#quiz_ui').hide();
+            $('#correct-id').show();
+            setTimeout(timer_ui.reset(), 5000);
+
+            timer_ui.reset();
+        } else if (e !== api.cAnswer) {
+            timer_ui.stop();
+            vals.incorrect++;
+            console.log(vals.incorrect);
+            $('#quiz_ui').hide();
+            $('#incorrect-id').show();
+            setTimeout(timer_ui.reset(), 5000);
+        }
     }
 };
 
@@ -111,5 +187,10 @@ $(function() {
         $('#quiz_ui').show();
         $('hr').show();
         $('#time-alert').show();
+        api.fetch();
+    });
+    $('.list-group-item').click(e => {
+        console.log();
+        vals.corCheck(e.target.innerText);
     });
 });
